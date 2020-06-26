@@ -221,7 +221,7 @@ def compile(model):
 	
 
 def make_logdir(dirname):
-	logdir = pathlib.Path("../tensorboard_logs/" + dirname)
+	logdir = pathlib.Path("./tensorboard_logs/" + dirname)
 	if not logdir.exists():
 		os.makedirs(logdir)
 	name='default'
