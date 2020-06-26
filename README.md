@@ -1,0 +1,2 @@
+# SpeakerRecognition
+Proiectul de licență
