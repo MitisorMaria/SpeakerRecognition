@@ -1,0 +1,13 @@
+matplotlib
+librosa
+tensorflow
+tensorflow.keras
+pandas
+numpy
+sklearn
+os
+datetime
+pydub
+graphviz
+pydot
+IPython.display

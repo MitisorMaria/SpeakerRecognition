@@ -3,6 +3,10 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 import matplotlib.pyplot as plt
 
+from sklearn.preprocessing import LabelEncoder
+from keras.utils import to_categorical
+import signal_processing
+
 def evaluate_before_training(model, x_test, y_test):
 	# Display model architecture summary 
 	model.summary()
@@ -64,8 +68,15 @@ def evaluate_model(model, model_name, train_test_data):
 	score = model.evaluate(x_test, y_test, verbose=0)
 	print("Testing Accuracy: ", score[1])
 	
-def print_prediction(file_name):
-    prediction_feature = extract_features(file_name) 
+def print_prediction(file_name, model, num_rows, num_columns, num_channels, num_seconds):
+    # Convert features and corresponding classification labels into numpy arrays
+    y = np.array(['A.J._Buckley', 'A.R._Rahman', 'Aamir_Khan', 'Aaron_Tveit', 'Aaron_Yoo', 'Abbie_Cornish', 'Abigail_Breslin', 
+             'Abigail_Spencer', 'Adam_Beach', 'Adam_Brody'])
+
+    # Encode the classification labels
+    le = LabelEncoder()
+    yy = to_categorical(le.fit_transform(y))
+    prediction_feature = signal_processing.extract_features_mfcc_seconds(file_name, num_rows, num_columns, num_seconds)
     prediction_feature = prediction_feature.reshape(1, num_rows, num_columns, num_channels)
 
     predicted_vector = model.predict_classes(prediction_feature)
