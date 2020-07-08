@@ -69,7 +69,7 @@ def evaluate_model(model, model_name, train_test_data):
 	print("Testing Accuracy: ", score[1])
 	
 def print_prediction(file_name, model, num_rows, num_columns, num_channels, num_seconds):
-    # Convert features and corresponding classification labels into numpy arrays
+    Convert features and corresponding classification labels into numpy arrays
     y = np.array(['A.J._Buckley', 'A.R._Rahman', 'Aamir_Khan', 'Aaron_Tveit', 'Aaron_Yoo', 'Abbie_Cornish', 'Abigail_Breslin', 
              'Abigail_Spencer', 'Adam_Beach', 'Adam_Brody'])
 
@@ -91,9 +91,6 @@ def print_prediction(file_name, model, num_rows, num_columns, num_channels, num_
 		
 def plot_history(history):
     fig, axs = plt.subplots(1, 2, figsize=(12, 5))#, sharey=True)
-    #axs[0].bar(names, values)
-    #axs[1].scatter(names, values)
-    #axs[2].plot(names, values)
 
     loss = history.history['loss']
     acc = history.history['accuracy']

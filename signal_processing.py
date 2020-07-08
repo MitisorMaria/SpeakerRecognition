@@ -2,8 +2,7 @@ import numpy as np
 import librosa
 
 def extract_features_melspectrogram(file_name, nr_fft, nr_mels, hop_length, max_pad_len, seconds):
-    audio, sample_rate = librosa.load(file_name, res_type='kaiser_fast', duration=seconds) 
-    #mai intai tai din clip
+    audio, sample_rate = librosa.load(file_name, res_type='kaiser_fast', duration=seconds)
     mel = librosa.feature.melspectrogram(y=audio, sr=sample_rate, n_fft=nr_fft, hop_length=hop_length, n_mels=nr_mels)
     pad_width = max_pad_len - mel.shape[1]
     mel = np.pad(mel, pad_width=((0, 0), (0, pad_width)), mode='constant')
